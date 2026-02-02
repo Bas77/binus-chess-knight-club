@@ -158,7 +158,7 @@ const About = () => {
                   Learn more about our club's rules, regulations, and governance structure.
                 </p>
                 <a
-                  href="https://docs.google.com/spreadsheets/d/1EeOOoYZ_yULjz63Iv2bKQ7WB5xgNhvGV3PdeC8xo7yc/edit?usp=sharing"
+                  href="https://docs.google.com/document/d/1p-GUgnLFwgh9McdIufXWthqaz_4EgNKOHrdYMUoSFYU/edit?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary inline-flex items-center gap-2"
