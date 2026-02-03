@@ -191,7 +191,7 @@ const Contact = () => {
 
               <div className="order-1 lg:order-2 relative px-0 md:px-4 lg:px-8">
                 <h2 className="text-2xl font-bold text-chessBlue mb-6 flex items-center justify-center md:justify-start">
-                  <span className="text-chessGreen mr-2">♚</span>
+                  <span className="text-chessGreen mr-2">♚{' '}</span>
                   Contact Information
                 </h2>
                 <div className="bg-gray-50 p-6 rounded-lg shadow-sm mb-8">
