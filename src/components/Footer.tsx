@@ -1,12 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SiTiktok, SiInstagram } from "@icons-pack/react-simple-icons";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  
+  // Pages that already have their own CTA section
+  const pagesWithCTA = ["/", "/about", "/contact"];
+  const showCTA = !pagesWithCTA.includes(location.pathname);
 
   return (
-    <footer className="bg-chessBlue text-white pt-12 pb-6">
-      <div className="container mx-auto px-4">
+    <footer className="bg-chessBlue text-white">
+      {/* CTA Banner */}
+      {showCTA && (
+        <div className="bg-chessGreen py-12">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Join BINUS Chess Club?
+            </h2>
+            <p className="text-lg max-w-xl mx-auto mb-6 text-white/90">
+              Whether you're a beginner or an experienced player, we welcome all BINUS students.
+            </p>
+            <Button
+              asChild
+              className="bg-white text-chessGreen hover:bg-gray-100 font-bold px-6 py-3"
+            >
+              <Link to="/contact">Join Us Today</Link>
+            </Button>
+          </div>
+        </div>
+      )}
+      
+      <div className="container mx-auto px-4 pt-12 pb-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-4">
