@@ -7,7 +7,7 @@ const Footer = () => {
   const location = useLocation();
   
   // Pages that already have their own CTA section
-  const pagesWithCTA = ["/", "/about", "/contact"];
+  const pagesWithCTA = ["/", "/about", "/contact", "/events", "/team"];
   const showCTA = !pagesWithCTA.includes(location.pathname);
 
   return (
