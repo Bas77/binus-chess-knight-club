@@ -28,7 +28,7 @@ const About = () => {
         </section>
 
         {/* Tabbed Content */}
-        <section className="py-12">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <Tabs defaultValue="history" className="w-full">
               <TabsList className="w-full flex flex-wrap justify-center gap-2 h-auto bg-transparent mb-8">
