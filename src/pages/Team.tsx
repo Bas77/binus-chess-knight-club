@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import TeamCard from "@/components/TeamCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, Medal, Award, ChevronDown, ChevronUp, Users, Key } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // TODO:
 /*
@@ -465,7 +466,36 @@ const Team = () => {
                   </div>
                 </div>
               </TabsContent>
-            </Tabs>
+           </Tabs>
+
+            {/* Best Player of the Year */}
+            <div className="mt-16 max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-center text-chessBlue mb-8 flex items-center justify-center gap-2">
+                <Award className="w-6 h-6 text-yellow-500" />
+                Best Player of the Year
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  { year: "2024", name: "CM Dhatuyo Budiarto", reason: "By Elo" },
+                  { year: "2025", name: "Joel Wilson Suwanto", reason: "Rector Cup's 1st Place" },
+                  { year: "2026", name: "Coming Soon", reason: "" },
+                ].map((entry) => (
+                  <div
+                    key={entry.year}
+                    className={cn(
+                      "bg-white rounded-xl shadow-md border border-yellow-200 p-6 text-center transition-transform hover:scale-105",
+                      entry.year === "2026" && "opacity-60 border-dashed"
+                    )}
+                  >
+                    <div className="text-sm font-semibold text-chessGreen mb-1">{entry.year}</div>
+                    <div className="text-lg font-bold text-chessBlue">{entry.name}</div>
+                    {entry.reason && (
+                      <div className="text-sm text-gray-500 mt-1">{entry.reason}</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
