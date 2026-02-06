@@ -1,6 +1,8 @@
 
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useChessRating } from "@/hooks/useChessRating";
+import { User } from "lucide-react";
 
 interface TeamCardProps {
   name: string;
@@ -13,6 +15,7 @@ interface TeamCardProps {
 }
 
 const TeamCard = ({ name, position, rating, image, bio, className, chessComUsername }: TeamCardProps) => {
+  const [imgError, setImgError] = useState(false);
   const { data: liveRating, isLoading } = useChessRating(chessComUsername, rating || 0);
   
   const displayRating = liveRating || rating;
@@ -31,12 +34,19 @@ const TeamCard = ({ name, position, rating, image, bio, className, chessComUsern
 
   return (
     <div className={cn("bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105", className)}>
-      <div className="relative h-60 overflow-hidden">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover object-center"
-        />
+      <div className="relative h-60 overflow-hidden bg-gray-200">
+        {imgError || !image ? (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-gray-300 to-gray-400">
+            <User className="w-24 h-24 text-gray-100" strokeWidth={1.5} />
+          </div>
+        ) : (
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover object-center"
+            onError={() => setImgError(true)}
+          />
+        )}
         {displayRating && (
           <button
             onClick={handleRatingClick}
