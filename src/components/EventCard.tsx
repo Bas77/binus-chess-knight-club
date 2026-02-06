@@ -1,6 +1,7 @@
-
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 
 interface EventCardProps {
   title: string;
@@ -23,13 +24,24 @@ const EventCard = ({
   buttonLink = "#",
   className,
 }: EventCardProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div className={cn("bg-white rounded-lg shadow-md overflow-hidden flex flex-col", className)}>
-      <div className="h-64 overflow-hidden">
+      <div className="h-64 overflow-hidden relative">
+        {!imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-muted">
+            <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+          </div>
+        )}
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform hover:scale-105"
+          className={cn(
+            "w-full h-full object-cover transition-all hover:scale-105",
+            imageLoaded ? "opacity-100" : "opacity-0"
+          )}
+          onLoad={() => setImageLoaded(true)}
         />
       </div>
       <div className="p-6 flex flex-col flex-1">
