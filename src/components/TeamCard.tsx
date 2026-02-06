@@ -36,7 +36,7 @@ const TeamCard = ({ name, position, rating, image, bio, className, chessComUsern
     <div className={cn("bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105", className)}>
       <div className="relative h-60 overflow-hidden bg-gray-200">
         {imgError || !image ? (
-          <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #2a4a9a, #20397f)' }}>
+          <div className="w-full h-full flex items-center justify-center" style={{ background: '#2a367e' }}>
             <User className="w-24 h-24 text-white/60" strokeWidth={1.5} />
           </div>
         ) : (
